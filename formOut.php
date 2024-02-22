@@ -58,14 +58,24 @@ function test_input($data) {
   return $data;
 }
 
+// if($nameErr || $emailErr || $genderErr || $websiteErr ){
+
+
+//   header(
+//     'location:formIn.php?error=&nameErr='.$nameErr.'&emailErr='.$emailErr.'&websiteErr='.$websiteErr.'&genderErr='.$genderErr.'&name='.$name.'&email='.$email.'&website='.$website.'&gender='.$gender.'&comment='.$comment.'' 
+    
+//   ); 
+// }
+
 if($nameErr || $emailErr || $genderErr || $websiteErr ){
 
+  $str =  '&nameErr='.$nameErr .'&emailErr='.$emailErr.'&websiteErr='.$websiteErr.'&genderErr='.$genderErr.'&name='.$name.'&email='.$email.'&website='.$website.'&gender='.$gender.'&comment='.$comment.'';
 
-  header(
-    'location:formIn.php?error=&nameErr='.$nameErr.'&emailErr='.$emailErr.'&websiteErr='.$websiteErr.'&genderErr='.$genderErr.'&name='.$name.'&email='.$email.'&website='.$website.'&gender='.$gender.'&comment='.$comment.'' 
-    
-  ); 
+  $encodedString = base64_encode($str);
+  
+  header('location:formIn.php?error='. $encodedString);
 }
+  
 ?>
   
   <!-- You can add any further processing logic here if needed -->
